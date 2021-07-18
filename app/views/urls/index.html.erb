@@ -1,0 +1,17 @@
+<h1>Welcome to URL-Short.com</h1>
+<p>Please Enter URL</p>
+
+<%= form_with model: @url do |form| %>
+	<div class="errors"></div>
+  	<p>Please input url you want to shorten: <%= form.text_field :source_url %></p>
+  	<%= form.submit "Shorten"%>
+<% end %>
+
+
+<div class="url-list">
+	<% @urls.each do |url| %>
+	  <ul>
+	    <li><%= link_to @base_url + "/" + url.short_url, url_path(url) %> - <%= url.source_url %></li>
+	  </ul>
+	<% end %>
+</div>

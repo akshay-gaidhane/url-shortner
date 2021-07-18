@@ -1,0 +1,9 @@
+$(".errors").find('p').remove();
+<% if @url.errors.any? %>
+	<% @url.errors.full_messages.each do |l| %>
+		$(".errors").append('<p style="color: red;"><%= l %></p>')
+	<% end %>
+<% else %>
+	$('#url_source_url').val('')
+	$('.url-list').append('<ul><li><%= link_to @base_url + "/" + @url.short_url, url_path(@url) %> - <%= @url.source_url %></li></ul>')
+<% end %>
