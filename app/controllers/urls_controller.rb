@@ -18,9 +18,13 @@ class UrlsController < ApplicationController
 
   def show
     @url = Url.find_by_short_url(params[:id])
-    render 'errors/404.html.erb' , status: 404 and return if @url.nil? || @url.expired_at > Time.zone.now
-    @url.update_attribute(:click_count, @url.click_count + 1)
+    render 'errors/404.html.erb' , status: 404 and return if @url.nil? || @url.expired_at < Time.zone.now
+    @url.record_activity(request.remote_ip)
     redirect_to @url.source_url
+  end
+
+  def stats
+    @urls = Analytix.url_report(current_user.id)
   end
 
   private
