@@ -1,4 +1,4 @@
-<h1>Welcome to URL-Short.com</h1>
+<h1>Welcome to URL-Short.com</h1> <p align="right"><%= link_to "Stats", stats_urls_path %>  | <%= link_to "Logout", destroy_user_session_path, method: :delete  %></p>
 <p>Please Enter URL</p>
 
 <%= form_with model: @url do |form| %>
@@ -11,7 +11,7 @@
 <div class="url-list">
 	<% @urls.each do |url| %>
 	  <ul>
-	    <li><%= link_to @base_url + "/" + url.short_url, url_path(url) %> - <%= url.source_url %></li>
+	    <li><%= link_to @base_url + "/urls/" + url.short_url, url_path(url.short_url) %> - <%= url.source_url %></li>
 	  </ul>
 	<% end %>
 </div>

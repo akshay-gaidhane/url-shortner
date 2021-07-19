@@ -5,5 +5,5 @@ $(".errors").find('p').remove();
 	<% end %>
 <% else %>
 	$('#url_source_url').val('')
-	$('.url-list').append('<ul><li><%= link_to @base_url + "/" + @url.short_url, url_path(@url) %> - <%= @url.source_url %></li></ul>')
+	$('.url-list').append('<ul><li><%= link_to @base_url + "/urls/" + @url.short_url, url_path(@url.short_url) %> - <%= @url.source_url %></li></ul>')
 <% end %>
